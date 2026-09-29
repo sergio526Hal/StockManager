@@ -1,0 +1,12 @@
+.env
+.env.*
+/vendor/
+/node_modules/
+/writable/cache/
+/writable/logs/
+/writable/session/
+/writable/uploads/
+/writable/debugbar/
+.DS_Store
+Thumbs.db
+*.log
