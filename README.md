@@ -1,60 +1,276 @@
-# CodeIgniter 4 Framework
+# Stock Manager
 
-## What is CodeIgniter?
+Stock Manager est une application web de gestion de stock développée avec PHP, CodeIgniter et MySQL.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+L'application permet de gérer les produits, les catégories, les entrées et sorties de stock ainsi que le suivi des mouvements et des alertes.
 
-This repository holds the distributable version of the framework.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+---
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+## Présentation
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+Stock Manager est une application de gestion de stock destinée à faciliter le suivi des produits et des mouvements de stock.
 
-## Important Change with index.php
+Elle permet de centraliser les informations relatives aux produits et de suivre l'évolution du stock à travers une interface web.
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+---
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+## Objectifs du projet
 
-**Please** read the user guide for a better explanation of how CI4 works!
+- Gérer les produits
+- Gérer les catégories
+- Enregistrer les entrées de stock
+- Enregistrer les sorties de stock
+- Suivre les mouvements de stock
+- Gérer les alertes de stock
+- Consulter les informations relatives au stock
+- Faciliter la gestion quotidienne des produits
 
-## Repository Management
+---
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+## Technologies utilisées
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+- PHP
+- CodeIgniter
+- MySQL
+- HTML5
+- CSS3
+- JavaScript
+- Bootstrap
+- Git
+- GitHub
 
-## Contributing
+---
 
-We welcome contributions from the community.
+## Fonctionnalités
 
-Please read the [*Contributing to CodeIgniter*](https://github.com/codeigniter4/CodeIgniter4/blob/develop/CONTRIBUTING.md) section in the development repository.
+### Authentification
 
-## Server Requirements
+- Connexion utilisateur
+- Gestion des utilisateurs
+- Protection des pages selon l'authentification
 
-PHP version 8.1 or higher is required, with the following extensions installed:
+### Gestion des produits
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+- Ajouter un produit
+- Modifier un produit
+- Supprimer un produit
+- Consulter les produits
+- Associer un produit à une catégorie
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
+### Gestion du stock
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+- Enregistrer une entrée de stock
+- Enregistrer une sortie de stock
+- Consulter les mouvements de stock
+- Suivre la quantité disponible
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+### Gestion des catégories
+
+- Ajouter une catégorie
+- Modifier une catégorie
+- Supprimer une catégorie
+- Consulter les catégories
+
+### Alertes
+
+- Détection des produits avec un stock faible
+- Affichage des alertes de stock
+
+### Rapports
+
+- Consultation des informations relatives au stock
+- Suivi des mouvements de stock
+- Génération et consultation des rapports
+
+---
+
+## Structure du projet
+
+```text
+StockManager/
+│
+├── app/
+│   ├── Config/
+│   ├── Controllers/
+│   │   ├── Auth/
+│   │   ├── Login.php
+│   │   ├── Dashboard.php
+│   │   ├── Product.php
+│   │   ├── Stock.php
+│   │   └── Report.php
+│   │
+│   ├── Models/
+│   ├── Views/
+│   └── Database/
+│
+├── public/
+├── writable/
+├── tests/
+│
+├── migrations/
+├── sql/
+│   └── stock_manager.sql
+│
+├── .env
+├── .gitignore
+├── composer.json
+└── README.md
+## Installation
+
+### Prérequis
+
+Avant de commencer, assurez-vous d'avoir installé :
+
+- PHP 8.1 ou version supérieure
+- Composer
+- MySQL
+- Apache
+- Git
+- Laragon ou XAMPP
+
+### 1. Cloner le projet
+
+git clone https://github.com/sergio526Hal/StockManager.git
+
+### 2. Accéder au dossier du projet
+
+cd StockManager
+
+### 3. Installer les dépendances
+
+composer install
+
+### 4. Configurer la base de données
+
+Créer une base de données MySQL nommée :
+
+stock_manager
+
+Puis importer le fichier SQL :
+
+sql/stock_manager.sql
+
+### 5. Configurer la connexion à la base de données
+
+Créer ou modifier le fichier `.env` et renseigner les paramètres suivants :
+
+database.default.hostname = localhost
+database.default.database = stock_manager
+database.default.username = root
+database.default.password =
+database.default.DBDriver = MySQLi
+database.default.port = 3306
+
+### 6. Lancer l'application
+
+php spark serve
+
+Puis ouvrir l'application dans le navigateur :
+
+http://localhost:8080
+
+---
+
+## Installation avec Laragon
+
+Si le projet est placé dans :
+
+C:\laragon\www\StockManager
+
+Démarrer Laragon puis activer :
+
+- Apache
+- MySQL
+
+Ensuite, ouvrir l'application depuis le navigateur.
+
+---
+
+## Base de données
+
+L'application utilise une base de données MySQL.
+
+Les principales tables utilisées sont :
+
+users
+categories
+products
+stock
+stock_movements
+alerts
+
+Le fichier SQL de la base de données est disponible dans :
+
+sql/stock_manager.sql
+
+---
+
+## Lancement du projet
+
+Pour lancer le serveur de développement CodeIgniter :
+
+php spark serve
+
+L'application sera accessible à l'adresse :
+
+http://localhost:8080
+
+---
+
+## Captures d'écran
+
+Des captures d'écran de l'application peuvent être ajoutées ici afin de présenter l'interface du projet.
+
+### Page de connexion
+
+Ajoutez ici une capture d'écran de la page de connexion.
+
+### Tableau de bord
+
+Ajoutez ici une capture d'écran du tableau de bord.
+
+### Gestion des produits
+
+Ajoutez ici une capture d'écran de la gestion des produits.
+
+### Gestion du stock
+
+Ajoutez ici une capture d'écran de la gestion du stock.
+
+---
+
+## Contexte du projet
+
+Projet universitaire – Licence 3
+
+Formation :
+
+Informatique de Gestion, Génie Logiciel et Intelligence Artificielle
+
+Type de projet :
+
+Application web de gestion de stock
+
+Technologies principales :
+
+PHP, CodeIgniter et MySQL
+
+---
+
+## Auteur
+
+Maminomena Halinirina Sergio
+
+Étudiant en Licence 3 – Informatique
+
+GitHub :
+
+https://github.com/sergio526Hal
+
+---
+
+## Licence
+
+Ce projet a été développé dans le cadre d'un projet universitaire.
+
+Tous droits réservés à l'auteur.
